@@ -3,8 +3,8 @@ import 'package:growwui/Utils/Static/custom_color.dart';
 
 class TopGainerCompanyCustomCard extends StatelessWidget {
   final String name;
-  final int numbers;
-  final int belowNumbers;
+  final String numbers;
+  final String belowNumbers;
   final String image;
   const TopGainerCompanyCustomCard({
     Key? key,
@@ -17,30 +17,41 @@ class TopGainerCompanyCustomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(12),
       child: Container(
         // ignore: sort_child_properties_last
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+         // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(
               height: 10,
             ),
+            
             Container(
+              height: 50,
+              width: double.infinity,
+              padding: EdgeInsets.only(left: 14),
               alignment: Alignment.topLeft,
-              child: Image(
-                image: AssetImage(image),
-                height: 20,
-                width: 20,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image(
+                  fit: BoxFit.cover,
+                  image: AssetImage(image),
+                  height: 50,
+                  width: 50,
+                ),
               ),
             ),
             const SizedBox(
               height: 10,
             ),
-            Text(
-              name,
-              style: const TextStyle(
-                color: CustomColor.textColor,
+            Padding(
+              padding: const EdgeInsets.only(left:4),
+              child: Text(
+                name,
+                style: const TextStyle(
+                  color: CustomColor.textColor,
+                ),
               ),
             ),
             const SizedBox(
@@ -63,8 +74,8 @@ class TopGainerCompanyCustomCard extends StatelessWidget {
             ),
           ],
         ),
-        height: 600,
-        width: 300,
+        height: 150,
+        width: 125,
         color: CustomColor.cardBgColor,
       ),
     );

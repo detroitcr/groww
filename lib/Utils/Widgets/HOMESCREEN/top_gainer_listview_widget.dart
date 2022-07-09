@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:growwui/Models/top_gainer_stock_model.dart';
-import 'package:growwui/Utils/Widgets/top_gainer_card_widget.dart';
+import 'package:growwui/Utils/Widgets/HOMESCREEN/top_gainer_card_widget.dart';
 
-import '../../Models/market_type_model.dart';
+import '../../../Models/market_type_model.dart';
 
 class TopGainerListViewWidget extends StatelessWidget {
   const TopGainerListViewWidget({Key? key}) : super(key: key);
@@ -11,10 +11,10 @@ class TopGainerListViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      //  crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 140,
+            height: 180,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: gainersCompany.length,
@@ -28,7 +28,7 @@ class TopGainerListViewWidget extends StatelessWidget {
                       image: data.image,
                       name: data.name,
                       numbers: data.currentPrice,
-                      belowNumbers: data.greenPrice,
+                      belowNumbers: data.greenPrice ,
                     ),
                   ),
                 );
