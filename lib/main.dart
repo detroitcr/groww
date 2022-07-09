@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:growwui/Home/home_page.dart';
+
+import 'package:growwui/View/Onboarding/Home/home_page.dart';
 
 void main() {
   runApp(const MyApp());

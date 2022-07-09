@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:growwui/Utils/Static/custom_color.dart';
 import 'package:growwui/Utils/Widgets/all_stocks_market.dart';
+import 'package:growwui/Utils/Widgets/custom_appbar_widget.dart';
 import 'package:growwui/Utils/Widgets/first_row_listview_widget.dart';
+import 'package:growwui/Utils/Widgets/top_gainer_listview_widget.dart';
+import 'package:growwui/Utils/Widgets/top_gainer_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,15 +13,22 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: AppBar(),
+          appBar: CustomAppBar(title: 'groww'),
           backgroundColor: CustomColor.scaffoldColor,
           body: Column(
-            children:const  [
-              SizedBox(
+            children:  [
+               SizedBox(
                 height: 20,
               ),
-              MarketStockWidget(),
-              FirstRowCardList(),
+               MarketStockWidget(),
+               FirstRowCardList(),
+               SizedBox(
+                height: 20,
+              ),
+              TopGainerMarket(),
+              SizedBox(height: 20,),
+              TopGainerListViewWidget()
+
             ],
           )),
     );
