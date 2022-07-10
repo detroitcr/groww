@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:growwui/Models/top_gainer_stock_model.dart';
 import 'package:growwui/Utils/Widgets/HOMESCREEN/top_gainer_card_widget.dart';
 
-import '../../../Models/market_type_model.dart';
+
 
 class TopGainerListViewWidget extends StatelessWidget {
   const TopGainerListViewWidget({Key? key}) : super(key: key);

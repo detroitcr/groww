@@ -15,6 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -22,7 +23,9 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: const CustomAppBar(),
 //CustomAppBar(title: 'groww'),
         backgroundColor: CustomColor.scaffoldColor,
-        body: Column(
+        body:
+        //screens[currentIndex],
+         Column(
           children: const [
             SizedBox(
               height: 20,
@@ -45,33 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // MarketTypeCardWidget(),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: 1,
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: CustomColor.bottomNavigationBarbgColor,
-          selectedItemColor: CustomColor.selectedBottomNavigationBarItem,
-          unselectedItemColor: CustomColor.unselectedBottomNavigationBarItem,
-          items: [
-            BottomNavigationBarItem(
-              label: 'Stock',
-              icon: Icon(
-                Icons.currency_rupee,
-              ),
-            ),
-            BottomNavigationBarItem(
-              label: 'Crypto Currency',
-              icon: Icon(
-                Icons.currency_bitcoin_rounded,
-              ),
-            ),
-            BottomNavigationBarItem(
-              label: 'Calculate',
-              icon: Icon(
-                Icons.calculate,
-              ),
-            ),
-          ],
-        ),
+      
       ),
     );
   }
