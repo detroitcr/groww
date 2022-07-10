@@ -27,49 +27,64 @@ class TopGainerCompanyCustomCard extends StatelessWidget {
               height: 10,
             ),
             
-            Container(
-              height: 50,
-              width: double.infinity,
-              padding: EdgeInsets.only(left: 14),
-              alignment: Alignment.topLeft,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image(
-                  fit: BoxFit.cover,
-                  image: AssetImage(image),
-                  height: 50,
-                  width: 50,
-                ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Container(
+                    height: 50,
+                    width: double.infinity,
+                    padding:const  EdgeInsets.only(left: 20),
+                    alignment: Alignment.topLeft,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image(
+                        fit: BoxFit.cover,
+                        image: AssetImage(image),
+                        height: 50,
+                        width: 50,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right:30),
+                    child: Text(
+                      name,
+                      style: const TextStyle(
+                        color: CustomColor.textColor,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(
               height: 10,
             ),
             Padding(
-              padding: const EdgeInsets.only(left:4),
-              child: Text(
-                name,
-                style: const TextStyle(
-                  color: CustomColor.textColor,
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              numbers.toString(),
-              style: const TextStyle(
-                color: CustomColor.textColor,
-              ),
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Text(
-              belowNumbers.toString(),
-              style: const TextStyle(
-                color: CustomColor.upDownColor,
+              padding: const EdgeInsets.only(right:22.0),
+              child: Column(
+                
+                children: [
+                  Text(
+                    numbers.toString(),
+                    style: const TextStyle(
+                      color: CustomColor.textColor,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    belowNumbers.toString(),
+                    style: const TextStyle(
+                      color: CustomColor.upDownColor,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

@@ -23,7 +23,7 @@ class TopGainerListViewWidget extends StatelessWidget {
                 return GestureDetector(
                   onTap: () {},
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: TopGainerCompanyCustomCard(
                       image: data.image,
                       name: data.name,
