@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:growwui/Utils/Static/assets.dart';
 import 'package:growwui/Utils/Static/custom_color.dart';
 import 'package:growwui/Utils/Widgets/HOMESCREEN/all_stocks_market.dart';
 import 'package:growwui/Utils/Widgets/HOMESCREEN/custom_appbar_widget.dart';
@@ -8,21 +7,23 @@ import 'package:growwui/Utils/Widgets/HOMESCREEN/market_type_listview.dart';
 import 'package:growwui/Utils/Widgets/HOMESCREEN/top_gainer_listview_widget.dart';
 import 'package:growwui/Utils/Widgets/HOMESCREEN/top_gainer_widget.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: const CustomAppBar(),
-        
-
-        //CustomAppBar(title: 'groww'),
+//CustomAppBar(title: 'groww'),
         backgroundColor: CustomColor.scaffoldColor,
         body: Column(
           children: const [
-            
             SizedBox(
               height: 20,
             ),
@@ -44,8 +45,34 @@ class HomeScreen extends StatelessWidget {
             // MarketTypeCardWidget(),
           ],
         ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 1,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: CustomColor.bottomNavigationBarbgColor,
+          selectedItemColor: CustomColor.selectedBottomNavigationBarItem,
+          unselectedItemColor: CustomColor.unselectedBottomNavigationBarItem,
+          items: [
+            BottomNavigationBarItem(
+              label: 'Stock',
+              icon: Icon(
+                Icons.currency_rupee,
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: 'Crypto Currency',
+              icon: Icon(
+                Icons.currency_bitcoin_rounded,
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: 'Calculate',
+              icon: Icon(
+                Icons.calculate,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
-

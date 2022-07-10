@@ -11,4 +11,7 @@ class CustomColor {
   static const Color textColor = Color.fromARGB(255, 249, 248, 250);
   static const Color upDownColor = Color.fromARGB(255, 57, 174, 141);
   static const Color appBarText = Color.fromARGB(255, 118, 119, 124);
+  static const Color selectedBottomNavigationBarItem =  Color.fromARGB(255, 153, 164, 255);
+  static const Color unselectedBottomNavigationBarItem =  Color.fromARGB(255, 124, 126, 139);
+  static const Color bottomNavigationBarbgColor =  Color.fromARGB(255, 29, 29, 29);
 }
