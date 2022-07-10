@@ -16,8 +16,9 @@ class MarketTypeCardWidget extends StatelessWidget {
       onTap: () {},
       child: Container(
         decoration: BoxDecoration(
-            color: CustomColor.cardBgColor,
-            borderRadius: BorderRadius.circular(25)),
+          color: CustomColor.cardBgColor,
+          borderRadius: BorderRadius.circular(8),
+        ),
         height: 80,
         width: 140,
         child: Row(
