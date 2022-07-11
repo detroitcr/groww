@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:growwui/Utils/Widgets/HOMESCREEN/custom_card.dart';
 
-import '../../../Models/market_type_model.dart';
+import '../../../Models/Stocks/market_type_model.dart';
 
 class FirstRowCardList extends StatelessWidget {
   const FirstRowCardList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return 
+    SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:growwui/Utils/Widgets/Common/custom_bot_bar.dart';
 
 import 'package:growwui/View/Screens/Home/home_page.dart';
+import 'package:growwui/View/Screens/Profile/profile_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
    
         primarySwatch: Colors.blue,
       ),
-      home: const CustomBottomNavigationBar()
+      home:const ProfileScreen(), 
+      //const CustomBottomNavigationBar()
       //HomeScreen(),
     );
   }

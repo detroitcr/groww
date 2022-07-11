@@ -44,7 +44,8 @@ class CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       ),
       PersistentBottomNavBarItem(
         title: 'Crypto Currency',
-        icon: const Icon(
+        icon: 
+        const Icon(
           Icons.currency_bitcoin_rounded,
         ),
         activeColorPrimary: CustomColor.selectedBottomNavigationBarItem,

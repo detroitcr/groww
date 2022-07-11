@@ -18,4 +18,11 @@ class CustomColor {
   static const Color profileCircleColor = Color.fromARGB(255, 0, 137,123);
   static const Color profileextraTextColor = Color.fromARGB(255, 165, 165, 168);
   static const Color profilebelowIconColor = Color.fromARGB(255, 199, 199, 199);
+  static const Color profileRowIconColor =  Color.fromARGB(255, 29, 29, 29);
+  static const Color profilegreenIconColor = Color.fromARGB(255, 12, 36, 29);
+  /// for chip in profile Screen(),
+  static const Color profileChipColor = Color.fromARGB(255, 21, 154, 118);
+  /// divider color
+  static const Color dividerColor = Color.fromARGB(255,23,23,23);
+  
 }

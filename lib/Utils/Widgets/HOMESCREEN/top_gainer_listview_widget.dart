@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:growwui/Models/top_gainer_stock_model.dart';
+import 'package:growwui/Models/Stocks/top_gainer_stock_model.dart';
 import 'package:growwui/Utils/Widgets/HOMESCREEN/top_gainer_card_widget.dart';
 
 
