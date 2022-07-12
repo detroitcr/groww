@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:growwui/Utils/Static/custom_color.dart';
-import 'package:growwui/Utils/Widgets/HOMESCREEN/custom_appbar_widget.dart';
+import 'package:growwui/Utils/Widgets/Common/custom_appbar_widget.dart';
+import 'package:growwui/Utils/Widgets/CryptoScreenWidgets/CryptoCards/crypto_firstrow_card.dart';
+import 'package:growwui/Utils/Widgets/CryptoScreenWidgets/CryptoListView/crypto_first_row_list.dart';
+import 'package:growwui/Utils/Widgets/CryptoScreenWidgets/first_row.dart';
 
 class CryptoScreen extends StatelessWidget {
   const CryptoScreen({Key? key}) : super(key: key);
@@ -9,19 +12,20 @@ class CryptoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColor.scaffoldColor,
-      appBar:const  CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: Column(
-        children:const [
-          Center(
-            child: Text(
-              'Welcome Crypto Currency Screen',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
+        children: [
+          const SizedBox(
+            height: 20,
           ),
+          const CryptoFirstRow(),
+          const SizedBox(
+            height: 10,
+          ),
+         CryptoFirstRowList()
         ],
       ),
     );
   }
 }
+

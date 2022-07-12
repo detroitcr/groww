@@ -14,28 +14,44 @@ class MarketTypeCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {},
-      child: Container(
-        decoration: BoxDecoration(
-          color: CustomColor.cardBgColor,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        height: 80,
-        width: 140,
-        child: Row(
-          children: [
-            Expanded(
-              child: marketIcon,
-            ),
-            Expanded(
-              child: Text(
-                name,
-                style: const TextStyle(
-                  color: CustomColor.textColor,
-                ),
+      child: _MarketTypeCard(marketIcon: marketIcon, name: name),
+    );
+  }
+}
+
+class _MarketTypeCard extends StatelessWidget {
+  const _MarketTypeCard({
+    Key? key,
+    required this.marketIcon,
+    required this.name,
+  }) : super(key: key);
+
+  final Icon marketIcon;
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: CustomColor.cardBgColor,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      height: 80,
+      width: 140,
+      child: Row(
+        children: [
+          Expanded(
+            child: marketIcon,
+          ),
+          Expanded(
+            child: Text(
+              name,
+              style: const TextStyle(
+                color: CustomColor.textColor,
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

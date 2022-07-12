@@ -6,3 +6,5 @@ class Assets {
   static const String crypto = 'assets/images/cryptocurrency.png';
   static const String future = 'assets/images/choice.png';
 }
+
+

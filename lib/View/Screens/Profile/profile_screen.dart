@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:growwui/Utils/Static/custom_color.dart';
 import 'package:growwui/Utils/Widgets/PROFILE%20SCREEN%20WIDGETS/profile_app_bar.dart';
-import 'package:growwui/Utils/Widgets/PROFILE%20SCREEN%20WIDGETS/profile_first_row_widget.dart';
-import 'package:growwui/Utils/Widgets/PROFILE%20SCREEN%20WIDGETS/profile_listtile.dart';
-import 'package:growwui/Utils/Widgets/PROFILE%20SCREEN%20WIDGETS/profile_second_row_widget.dart';
-import 'package:growwui/Utils/Widgets/PROFILE%20SCREEN%20WIDGETS/profile_tile_card.dart';
+
+
+import '../../../Utils/Widgets/PROFILE SCREEN WIDGETS/PROFILE SCREEN LIST/profile_first_row_widget.dart';
+import '../../../Utils/Widgets/PROFILE SCREEN WIDGETS/PROFILE SCREEN LIST/profile_listtile.dart';
+import '../../../Utils/Widgets/PROFILE SCREEN WIDGETS/PROFILE SCREEN LIST/profile_second_row_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class ProfileScreen extends StatelessWidget {
         backgroundColor: CustomColor.scaffoldColor,
         appBar: const ProfileScreenAppBar(),
         body: ListView(
-          children: [
+          children:const  [
             SizedBox(
               height: 10,
             ),

@@ -76,7 +76,7 @@
 // }
 
 import 'package:flutter/material.dart';
-import 'package:growwui/Utils/Static/assets.dart';
+import 'package:growwui/Utils/Static/Assets/assets.dart';
 import 'package:growwui/Utils/Static/custom_color.dart';
 import 'package:growwui/View/Screens/Profile/profile_screen.dart';
 

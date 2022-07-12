@@ -24,5 +24,6 @@ class CustomColor {
   static const Color profileChipColor = Color.fromARGB(255, 21, 154, 118);
   /// divider color
   static const Color dividerColor = Color.fromARGB(255,23,23,23);
+  static const Color chipTextColor = Colors.greenAccent;
   
 }

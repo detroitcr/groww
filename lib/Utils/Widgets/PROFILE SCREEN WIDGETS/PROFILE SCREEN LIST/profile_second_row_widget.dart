@@ -30,6 +30,7 @@ class ProfileSecondRowWidget extends StatelessWidget {
             width: 10,
           ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children:const [
               Text(
                 '\$96',

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:growwui/Utils/Static/custom_color.dart';
 import 'package:growwui/Utils/Widgets/HOMESCREEN/all_stocks_market.dart';
-import 'package:growwui/Utils/Widgets/HOMESCREEN/custom_appbar_widget.dart';
+import 'package:growwui/Utils/Widgets/Common/custom_appbar_widget.dart';
 import 'package:growwui/Utils/Widgets/HOMESCREEN/first_row_listview_widget.dart';
 import 'package:growwui/Utils/Widgets/HOMESCREEN/market_type_listview.dart';
 import 'package:growwui/Utils/Widgets/HOMESCREEN/top_gainer_listview_widget.dart';
@@ -20,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        
         appBar: const CustomAppBar(),
 //CustomAppBar(title: 'groww'),
         backgroundColor: CustomColor.scaffoldColor,
