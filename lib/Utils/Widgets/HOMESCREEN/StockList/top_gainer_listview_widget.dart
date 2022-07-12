@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:growwui/Models/Stocks/top_gainer_stock_model.dart';
-import 'package:growwui/Utils/Widgets/HOMESCREEN/top_gainer_card_widget.dart';
+import 'package:growwui/Utils/Widgets/HOMESCREEN/StockCards/top_gainer_card_widget.dart';
+
 import 'package:growwui/View/Screens/Stock/stock_detail_screen.dart';
 
 class TopGainerListViewWidget extends StatelessWidget {

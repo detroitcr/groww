@@ -11,7 +11,7 @@ class CryptoFirstRowList extends StatelessWidget {
         child: Column(
       children: [
         SizedBox(
-          height: 120,
+          height: 150,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
               itemCount: cryptoDetailList.length,

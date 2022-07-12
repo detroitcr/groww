@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:growwui/Models/Stocks/market_type_models.dart';
-import 'package:growwui/Utils/Widgets/HOMESCREEN/market_types_card.dart';
+import 'package:growwui/Utils/Widgets/HOMESCREEN/StockCards/market_types_card.dart';
+
 
 class MarketTypeListWidget extends StatelessWidget {
   const MarketTypeListWidget({Key? key}) : super(key: key);

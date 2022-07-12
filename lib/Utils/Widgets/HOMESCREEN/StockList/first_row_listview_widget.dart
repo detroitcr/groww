@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:growwui/Utils/Widgets/HOMESCREEN/custom_card.dart';
 
-import '../../../Models/Stocks/market_type_model.dart';
+import 'package:growwui/Utils/Widgets/HOMESCREEN/StockCards/custom_card.dart';
+
+import '../../../../Models/Stocks/market_type_model.dart';
 
 class FirstRowCardList extends StatelessWidget {
   const FirstRowCardList({Key? key}) : super(key: key);

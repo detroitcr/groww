@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:growwui/Utils/Static/custom_color.dart';
 import 'package:growwui/Utils/Widgets/HOMESCREEN/all_stocks_market.dart';
 import 'package:growwui/Utils/Widgets/Common/custom_appbar_widget.dart';
-import 'package:growwui/Utils/Widgets/HOMESCREEN/first_row_listview_widget.dart';
-import 'package:growwui/Utils/Widgets/HOMESCREEN/market_type_listview.dart';
-import 'package:growwui/Utils/Widgets/HOMESCREEN/top_gainer_listview_widget.dart';
+import 'package:growwui/Utils/Widgets/HOMESCREEN/StockList/first_row_listview_widget.dart';
+import 'package:growwui/Utils/Widgets/HOMESCREEN/StockList/market_type_listview.dart';
+import 'package:growwui/Utils/Widgets/HOMESCREEN/StockList/top_gainer_listview_widget.dart';
 import 'package:growwui/Utils/Widgets/HOMESCREEN/top_gainer_widget.dart';
 
 class HomeScreen extends StatefulWidget {

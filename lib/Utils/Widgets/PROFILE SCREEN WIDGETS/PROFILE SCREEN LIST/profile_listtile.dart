@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:growwui/Utils/Widgets/PROFILE%20SCREEN%20WIDGETS/profile_tile_card.dart';
+import 'package:growwui/Utils/Widgets/PROFILE%20SCREEN%20WIDGETS/ProfileCard/profile_tile_card.dart';
 
 import '../../../../Models/ProfileScreenModels/profile_items_model.dart';
 
