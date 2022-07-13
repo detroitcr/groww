@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:growwui/AUTHENTICATION/SCREENS/login_screen.dart';
+import 'package:growwui/AUTHENTICATION/Services/firebase_auth_methods.dart';
 import 'package:growwui/AUTHENTICATION/WIDGETS/custom_text_field.dart';
-import 'package:growwui/AUTHENTICATION/WIDGETS/utils.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({
@@ -36,24 +36,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
   }
 
-  Future signUp() async {
-    showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (context) => const Center(child: CircularProgressIndicator()));
-    try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailSignUpController.text.trim(),
-        password: _passWordSignUpController.text.trim(),
-      );
-    } on FirebaseAuthException catch (e) {
-      print(e);
-      Utils.showSnackBar(e.message);
-    }
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
-      return const LoginScreen();
-    }), (route) => false);
+  void signUp() {
+   
+    FirebaseAuthMethods(auth: FirebaseAuth.instance).signUpWithEmail(
+      email: _emailSignUpController.text,
+      password: _passWordSignUpController.text,
+      context: context,
+      
+    );
   }
+ 
+ 
+  // Future signUp() async {
+  //   showDialog(
+  //       context: context,
+  //       barrierDismissible: false,
+  //       builder: (context) => const Center(child: CircularProgressIndicator()));
+  //   try {
+  //     await FirebaseAuth.instance.createUserWithEmailAndPassword(
+  //       email: _emailSignUpController.text.trim(),
+  //       password: _passWordSignUpController.text.trim(),
+  //     );
+  //   } on FirebaseAuthException catch (e) {
+  //     print(e);
+  //     Utils.showSnackBar(e.message);
+  //   }
+  //   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
+  //     return const LoginScreen();
+  //   }), (route) => false);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +104,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               textInputType: TextInputType.text,
               controller: _passWordSignUpController,
               isPass: _isHidden,
-            //  validator: (value) {},
+              //  validator: (value) {},
               icon: const Icon(
                 Icons.lock,
               ),

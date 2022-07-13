@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home:
-      const CryptoScreen() 
-      //const LoginScreen(),
+      //const CryptoScreen() 
+      const LoginScreen(),
       // ProfileScreen(),
       //const CustomBottomNavigationBar()
       //HomeScreen(),

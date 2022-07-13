@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:growwui/AUTHENTICATION/WIDGETS/sign_out.dart';
 import 'package:growwui/Utils/Static/custom_color.dart';
 import 'package:growwui/Utils/Widgets/Common/custom_appbar_widget.dart';
-import 'package:growwui/Utils/Widgets/CryptoScreenWidgets/CryptoCards/crypto_firstrow_card.dart';
 import 'package:growwui/Utils/Widgets/CryptoScreenWidgets/CryptoListView/crypto_first_row_list.dart';
 import 'package:growwui/Utils/Widgets/CryptoScreenWidgets/first_row.dart';
 
@@ -14,18 +14,21 @@ class CryptoScreen extends StatelessWidget {
       backgroundColor: CustomColor.scaffoldColor,
       appBar: const CustomAppBar(),
       body: Column(
-        children: [
-          const SizedBox(
+        children: const [
+          SizedBox(
             height: 20,
           ),
-          const CryptoFirstRow(),
-          const SizedBox(
+          CryptoFirstRow(),
+          SizedBox(
             height: 10,
           ),
-         CryptoFirstRowList()
+          CryptoFirstRowList(),
+          SizedBox(
+            height: 10,
+          ),
+          SignOut(),
         ],
       ),
     );
   }
 }
-
