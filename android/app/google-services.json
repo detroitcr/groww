@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1043465103826-tch1n7dfv3551qhn3uqojnsm0m6unf9h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.growwui",
+            "certificate_hash": "f40e3d3a643891488f08981cd15f5a2c804ac8e7"
+          }
+        },
+        {
           "client_id": "1043465103826-sat0aja732674gvhtf0ooiblohl63quo.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "1043465103826-sat0aja732674gvhtf0ooiblohl63quo.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1043465103826-1432asjva39hn5bn2sfra22fbpbbqcpb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.growwui"
+              }
             }
           ]
         }

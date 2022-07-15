@@ -9,8 +9,8 @@ class CustomTextFormField extends StatelessWidget {
   final FormFieldSetter<String?>? onsaved;
   final Function(String)? onChanged;
   final bool isPass;
-  final String hintText;
-  final TextInputType textInputType;
+  final String? hintText;
+  final TextInputType? textInputType;
   final Color? fillColor;
   const CustomTextFormField(
       {Key? key,

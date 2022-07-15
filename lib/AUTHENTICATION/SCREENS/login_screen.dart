@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:growwui/AUTHENTICATION/SCREENS/phone_verification_screen.dart';
 import 'package:growwui/AUTHENTICATION/SCREENS/signup_screen.dart';
 import 'package:growwui/AUTHENTICATION/WIDGETS/custom_text_field.dart';
 import 'package:growwui/Utils/Static/custom_color.dart';
@@ -163,6 +164,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               ),
+        const      SizedBox(
+                height: 10,
+              ),
+            const  Center(
+                child: Text(
+                  'or',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+           const   SizedBox(height: 10,),
+              TextButton(onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const PhoneVerification();
+                },));
+              }, child:const Text('Sign with OTP'))
             ],
           ),
         ),
