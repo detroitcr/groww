@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:growwui/AUTHENTICATION/SCREENS/login_screen.dart';
 import 'package:growwui/AUTHENTICATION/Services/firebase_auth_methods.dart';
 import 'package:growwui/AUTHENTICATION/WIDGETS/custom_text_field.dart';
+import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatefulWidget {
+  static const routeName ='/signup-email-password';
   const SignUpScreen({
     Key? key,
   }) : super(key: key);
@@ -37,8 +39,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void signUp() {
-   
-    FirebaseAuthMethods(auth: FirebaseAuth.instance).signUpWithEmail(
+   context.read<FirebaseAuthMethods>().
+    signUpWithEmail(
       email: _emailSignUpController.text,
       password: _passWordSignUpController.text,
       context: context,
@@ -47,24 +49,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
  
  
-  // Future signUp() async {
-  //   showDialog(
-  //       context: context,
-  //       barrierDismissible: false,
-  //       builder: (context) => const Center(child: CircularProgressIndicator()));
-  //   try {
-  //     await FirebaseAuth.instance.createUserWithEmailAndPassword(
-  //       email: _emailSignUpController.text.trim(),
-  //       password: _passWordSignUpController.text.trim(),
-  //     );
-  //   } on FirebaseAuthException catch (e) {
-  //     print(e);
-  //     Utils.showSnackBar(e.message);
-  //   }
-  //   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
-  //     return const LoginScreen();
-  //   }), (route) => false);
-  // }
+
 
   @override
   Widget build(BuildContext context) {

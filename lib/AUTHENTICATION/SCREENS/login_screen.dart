@@ -1,17 +1,16 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'dart:io';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:growwui/AUTHENTICATION/SCREENS/phone_verification_screen.dart';
 import 'package:growwui/AUTHENTICATION/SCREENS/signup_screen.dart';
 import 'package:growwui/AUTHENTICATION/Services/firebase_auth_methods.dart';
 import 'package:growwui/AUTHENTICATION/WIDGETS/custom_text_field.dart';
 import 'package:growwui/Utils/Static/custom_color.dart';
-import 'package:growwui/Utils/Widgets/Common/custom_bot_bar.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
+  static String routeName ='/login-email-password';
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -27,26 +26,35 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isText = true;
   //final auth = FirebaseAuth.instance;
 
-  Future signIn() async {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => const Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailController.text.trim(),
-          password: passWordController.text.trim());
-    } on FirebaseAuthException catch (e) {
-      print(e);
-      // Utils.showSnackBar(e.message);
-    }
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
-      return const CustomBottomNavigationBar();
-    }), (route) => false);
+  void loginUser() {
+    context.read<FirebaseAuthMethods>().loginWithEmail(
+          email: emailController.text,
+          password: passWordController.text,
+          context: context,
+        );
   }
+  // Future signIn() async {
+  //   showDialog(
+  //     context: context,
+  //     barrierDismissible: false,
+  //     builder: (context) => const Center(
+  //       child: CircularProgressIndicator(),
+  //     ),
+  //   );
+  //   try {
+  //     await FirebaseAuth.instance.signInWithEmailAndPassword(
+  //         email: emailController.text.trim(),
+  //         password: passWordController.text.trim());
+  //   } on FirebaseAuthException catch (e) {
+  //     if (kDebugMode) {
+  //       print(e);
+  //     }
+  //     // Utils.showSnackBar(e.message);
+  //   }
+  //   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
+  //     return const CustomBottomNavigationBar();
+  //   }), (route) => false);
+  // }
 
   @override
   void dispose() {
@@ -136,9 +144,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      signIn();
-                    }
+                    loginUser();
+                    // if (formKey.currentState!.validate()) {
+                    //   signIn();
+                    // }
                   },
                   child: const Text(
                     'Login',
@@ -199,24 +208,41 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   child: const Text('Sign with OTP'),
                 ),
-              const  SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    FirebaseAuthMethods(auth: FirebaseAuth.instance).signwithGoogle(context);
+                    context.read<FirebaseAuthMethods>().signwithGoogle(context);
                   },
                   child: const Text(
                     'Sign with Google',
                   ),
                 ),
-               const SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
-                  child:const Text(
+                  onPressed: () {
+                    context
+                        .read<FirebaseAuthMethods>()
+                        .signInWithFacebook(context);
+                  },
+                  child: const Text(
                     'Sign with facebook',
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    context
+                        .read<FirebaseAuthMethods>()
+                        .signInAnonymously(context);
+                  },
+                  child: const Text(
+                    'Anomanyus Sign In',
                   ),
                 ),
               ],

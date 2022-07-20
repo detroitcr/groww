@@ -1,10 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:growwui/AUTHENTICATION/Services/firebase_auth_methods.dart';
 import 'package:growwui/AUTHENTICATION/WIDGETS/custom_text_field.dart';
+import 'package:growwui/Utils/Widgets/Common/custom_bot_bar.dart';
+import 'package:provider/provider.dart';
 
 class PhoneVerification extends StatefulWidget {
+  static String routeName = '/phone';
   const PhoneVerification({Key? key}) : super(key: key);
 
   @override
@@ -12,7 +13,6 @@ class PhoneVerification extends StatefulWidget {
 }
 
 class _PhoneVerificationState extends State<PhoneVerification> {
-
   final TextEditingController _phoneController = TextEditingController();
 
   @override
@@ -21,9 +21,12 @@ class _PhoneVerificationState extends State<PhoneVerification> {
     super.dispose();
   }
 
-void phoneSignIn(){
-  FirebaseAuthMethods(auth:FirebaseAuth.instance).phoneSignIn(context, _phoneController.text);
-}
+  void phoneSignIn() {
+    context
+        .read<FirebaseAuthMethods>()
+        .phoneSignIn(context, _phoneController.text);
+    // FirebaseAuthMethods(auth:FirebaseAuth.instance).phoneSignIn(context, _phoneController.text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,19 +34,35 @@ void phoneSignIn(){
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          SizedBox(height: 80),
+          const SizedBox(
+            height: 80,
+          ),
           CustomTextFormField(
             controller: _phoneController,
             hintText: 'Enter mobile number',
             textInputType: TextInputType.emailAddress,
-            suffixIcon: Icon(Icons.phone),
+            suffixIcon: const Icon(
+              Icons.phone,
+            ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           ElevatedButton(
-            onPressed: phoneSignIn,
-            child: Text('Send'),
+            onPressed: () {
+              context
+                  .read<FirebaseAuthMethods>()
+                  .phoneSignIn(context, _phoneController.text);
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) =>
+                          const CustomBottomNavigationBar())),
+                  (route) => false);
+            },
+            child: const Text(
+              'Send',
+            ),
           )
         ],
       ),

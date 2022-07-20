@@ -2,16 +2,42 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:growwui/AUTHENTICATION/SCREENS/login_screen.dart';
 import 'package:growwui/Utils/Widgets/show_otp_dialog.dart';
 import 'package:growwui/Utils/show_snackbar.dart';
-
+import 'package:growwui/Utils/Widgets/Common/custom_bot_bar.dart';
 class FirebaseAuthMethods {
   final FirebaseAuth auth;
   FirebaseAuthMethods({
     required this.auth,
   });
+
+// State persistence
+ Stream<User?> get authState => FirebaseAuth.instance.authStateChanges();
+
+
+  // EMAIL LOGIN
+  Future<void> loginWithEmail({
+    required String email,
+    required String password,
+    required BuildContext context,
+  }) async {
+    try {
+      await auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      if (!auth.currentUser!.emailVerified) {
+        await sendEmailVerification(context);
+        // restrict access to certain things using provider
+        // transition to another page instead of home screen
+      }
+    } on FirebaseAuthException catch (e) {
+      showSnackBar(context, e.message!); // Displaying the error message
+    }
+  }
 // Email Signup(),
   Future<void> signUpWithEmail({
     required String email,
@@ -56,10 +82,15 @@ class FirebaseAuthMethods {
         googleProvider
             .addScope('https://www.googleapis.com/auth/contacts.readonly');
         await auth.signInWithPopup(googleProvider);
+         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
+      return const CustomBottomNavigationBar();
+    }), (route) => false);
       } else {
         //google sign in
         final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-        print(googleUser);
+        if (kDebugMode) {
+          print(googleUser);
+        }
 
         final GoogleSignInAuthentication? googleAuth =
             await googleUser?.authentication;
@@ -73,12 +104,33 @@ class FirebaseAuthMethods {
 // you cant use two different ways google sign in and sign up we use only one Method(),
           UserCredential userCredential =
               await auth.signInWithCredential(credential);
-          print(userCredential.user!.email);
+          if (kDebugMode) {
+            print(userCredential.user!.email);
+          }
         }
       }
     } on FirebaseAuthException catch (e) {
       showSnackBar(context, e.message!);
     }
+     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
+      return const CustomBottomNavigationBar();
+    }), (route) => false);
+  }
+
+// for facebook sigin In(),
+  Future<void> signInWithFacebook(BuildContext context) async {
+    try {
+      final LoginResult loginResult = await FacebookAuth.instance.login();
+      final OAuthCredential facebookAuthCredential =
+          FacebookAuthProvider.credential(loginResult.accessToken!.token);
+      await auth.signInWithCredential(facebookAuthCredential);
+
+    } on FirebaseAuthException catch (e) {
+      showSnackBar(context, e.message!);
+    }
+     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
+      return const CustomBottomNavigationBar();
+    }), (route) => false);
   }
 
 // Phoneverification(),
@@ -135,5 +187,26 @@ class FirebaseAuthMethods {
       );
     }
   }
+
+// Signout(),
+
+Future<void>signOut(BuildContext context)async{
+try{
+await auth.signOut;
+}on FirebaseAuthException catch(e){
+  showSnackBar(context, e.message!);
+}
 }
 
+  // anomanyus sign In(),
+  Future<void>signInAnonymously(BuildContext context)async{
+    try{
+await auth.signInAnonymously();
+    }on FirebaseAuthException catch(e){
+      showSnackBar(context, e.message!);
+    }
+     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
+      return const CustomBottomNavigationBar();
+    }), (route) => false);
+  }
+}
