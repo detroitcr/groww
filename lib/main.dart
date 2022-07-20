@@ -1,10 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:growwui/AUTHENTICATION/SCREENS/login_screen.dart';
-import 'package:growwui/AUTHENTICATION/main_page.dart';
 import 'package:growwui/Utils/Widgets/Common/custom_bot_bar.dart';
-import 'package:growwui/View/Screens/Crypto/crypto_screen.dart';
-
 import 'firebase_options.dart';
 
 void main() async {
@@ -12,6 +11,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await GoogleSignIn().signOut();
   runApp(const MyApp());
 }
 
@@ -28,8 +28,27 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home:
+
+
+      // StreamBuilder<User?>(
+      //   stream:FirebaseAuth.instance.authStateChanges(),builder:(context,snapshot){
+      //     if(snapshot.connectionState == ConnectionState.waiting){
+      //       return const  Center(child: CircularProgressIndicator());
+      //     }else if(snapshot.hasError){
+      //       return const Center(child: Text('Something wrong Happened'),);
+      //     }else if(snapshot.hasData){
+      //       return const CustomBottomNavigationBar();
+      //     }else{
+      //       return const Text('kuch toh kar');
+      //     }
+      //   }
+      // )
+      // StreamBuilder<User?>(
+
+      //   stream:),
+
       //const CryptoScreen() 
-      const LoginScreen(),
+       const LoginScreen(),
       // ProfileScreen(),
       //const CustomBottomNavigationBar()
       //HomeScreen(),

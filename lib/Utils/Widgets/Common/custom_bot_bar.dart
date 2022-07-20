@@ -5,6 +5,8 @@ import 'package:growwui/View/Screens/Crypto/crypto_screen.dart';
 import 'package:growwui/View/Screens/Home/home_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
+PersistentTabController? controller;
+
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({Key? key}) : super(key: key);
 
@@ -15,13 +17,14 @@ class CustomBottomNavigationBar extends StatefulWidget {
 
 class CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   int currentIndex = 0;
-  PersistentTabController? _controller;
+
   // bool? _hideNavBar;
 
   @override
   void initState() {
     super.initState();
-    _controller = PersistentTabController(initialIndex: 0);
+    controller = PersistentTabController(initialIndex: 0);
+
     // _hideNavBar = false;
   }
 
@@ -44,8 +47,7 @@ class CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       ),
       PersistentBottomNavBarItem(
         title: 'Crypto Currency',
-        icon: 
-        const Icon(
+        icon: const Icon(
           Icons.currency_bitcoin_rounded,
         ),
         activeColorPrimary: CustomColor.selectedBottomNavigationBarItem,
@@ -71,7 +73,7 @@ class CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           onItemSelected: (index) => setState(() => currentIndex = index),
           screens: _buildScreens(),
           items: _navBarsItem(),
-          controller: _controller,
+          controller: controller,
           confineInSafeArea: true,
           backgroundColor: CustomColor.bottomNavigationBarbgColor,
           hideNavigationBarWhenKeyboardShows: false,

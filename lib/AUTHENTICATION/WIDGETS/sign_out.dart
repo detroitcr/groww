@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:growwui/AUTHENTICATION/SCREENS/login_screen.dart';
-
+import 'package:growwui/Utils/Widgets/Common/custom_bot_bar.dart';
+import 'package:growwui/View/Screens/Home/home_page.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class SignOut extends StatefulWidget {
   const SignOut({Key? key}) : super(key: key);
@@ -13,13 +15,34 @@ class SignOut extends StatefulWidget {
 class _SignOutState extends State<SignOut> {
   FirebaseAuth auth = FirebaseAuth.instance;
 
-Future signOut()async{
-  await auth.signOut().then((value) =>
-  // Navigator.pop(context));
-  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_){
-    return const  LoginScreen();
-  }), (route) => false));
-}
+
+
+  Future signOut() async {
+    await auth.signOut().then((value)  {
+      // Navigator.push(context,MaterialPageRoute(builder: (context){
+      //   return const LoginScreen();
+      // }));
+//controller!.dispose();
+      // await 
+     
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
+        return const LoginScreen();
+
+      }), (route) => false);
+     
+       pushNewScreen (
+        context,
+        screen: LoginScreen(),
+
+        withNavBar: false, // OPTIONAL VALUE. True by default.
+        pageTransitionAnimation: PageTransitionAnimation.cupertino,
+      );
+    }
+
+
+        // Navigator.pop(context));
+        );
+  }
 
   @override
   Widget build(BuildContext context) {

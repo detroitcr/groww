@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:growwui/AUTHENTICATION/Services/firebase_auth_methods.dart';
 import 'package:growwui/AUTHENTICATION/WIDGETS/custom_text_field.dart';
 

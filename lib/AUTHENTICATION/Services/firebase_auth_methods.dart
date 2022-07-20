@@ -2,6 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:growwui/AUTHENTICATION/SCREENS/login_screen.dart';
 import 'package:growwui/Utils/Widgets/show_otp_dialog.dart';
 import 'package:growwui/Utils/show_snackbar.dart';
@@ -22,7 +23,7 @@ class FirebaseAuthMethods {
         email: email,
         password: password,
       );
-    
+
       await sendEmailVerification(context);
       //  await phoneVerification(context);
     } on FirebaseException catch (e) {
@@ -47,12 +48,38 @@ class FirebaseAuthMethods {
     }
   }
 
+// google sign in authentication
+  Future<void> signwithGoogle(BuildContext context) async {
+    try {
+      if (kIsWeb) {
+        GoogleAuthProvider googleProvider = GoogleAuthProvider();
+        googleProvider
+            .addScope('https://www.googleapis.com/auth/contacts.readonly');
+        await auth.signInWithPopup(googleProvider);
+      } else {
+        //google sign in
+        final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+        print(googleUser);
 
-// google sign in
-// Future<void>signwithGoogle(){
+        final GoogleSignInAuthentication? googleAuth =
+            await googleUser?.authentication;
 
+        if (googleAuth?.accessToken != null) {
+          // Create a new credential
+          final credential = GoogleAuthProvider.credential(
+            accessToken: googleAuth?.accessToken,
+          );
 
-// }
+// you cant use two different ways google sign in and sign up we use only one Method(),
+          UserCredential userCredential =
+              await auth.signInWithCredential(credential);
+          print(userCredential.user!.email);
+        }
+      }
+    } on FirebaseAuthException catch (e) {
+      showSnackBar(context, e.message!);
+    }
+  }
 
 // Phoneverification(),
   Future<void> phoneSignIn(
@@ -78,53 +105,35 @@ class FirebaseAuthMethods {
           Navigator.of(context).pop();
         },
       );
-    } else {
-      await auth.verifyPhoneNumber(
-      phoneNumber: phoneNumber,
-      verificationCompleted: (PhoneAuthCredential credential) async {
-        await auth.signInWithCredential(credential);
-      },
-      verificationFailed: (e) {
-        showSnackBar(context, e.message!);
-      },
-      codeSent: ((String verificationId, int? resendToken) async {
-        showOtpDialog(
-            context: context,
-            codeController: codeController,
-            onPressed: () async {
-              PhoneAuthCredential credential = PhoneAuthProvider.credential(
-                verificationId: verificationId,
-                smsCode: codeController.text.trim(),
-              );
-              await auth.signInWithCredential(credential);
-              Navigator.of(context).pop();
-            });
-      }),
-      codeAutoRetrievalTimeout: (String verificationId) {
-        //Auto-resolution timed out...
-      },
-    );
     }
     //for android,ios
-    
+    else {
+      await auth.verifyPhoneNumber(
+        phoneNumber: phoneNumber,
+        verificationCompleted: (PhoneAuthCredential credential) async {
+          await auth.signInWithCredential(credential);
+        },
+        verificationFailed: (e) {
+          showSnackBar(context, e.message!);
+        },
+        codeSent: ((String verificationId, int? resendToken) async {
+          showOtpDialog(
+              context: context,
+              codeController: codeController,
+              onPressed: () async {
+                PhoneAuthCredential credential = PhoneAuthProvider.credential(
+                  verificationId: verificationId,
+                  smsCode: codeController.text.trim(),
+                );
+                await auth.signInWithCredential(credential);
+                Navigator.of(context).pop();
+              });
+        }),
+        codeAutoRetrievalTimeout: (String verificationId) {
+          //Auto-resolution timed out...
+        },
+      );
+    }
   }
 }
 
-// Future signUp() async {
-//   showDialog(
-//       context: context,
-//       barrierDismissible: false,
-//       builder: (context) => const Center(child: CircularProgressIndicator()));
-//   try {
-//     await FirebaseAuth.instance.createUserWithEmailAndPassword(
-//       email: _emailSignUpController.text.trim(),
-//       password: _passWordSignUpController.text.trim(),
-//     );
-//   } on FirebaseAuthException catch (e) {
-//     print(e);
-//     Utils.showSnackBar(e.message);
-//   }
-//   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
-//     return const LoginScreen();
-//   }), (route) => false);
-// }
