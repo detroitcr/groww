@@ -70,6 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
         exit(0);
       },
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: CustomColor.scaffoldColor,
         body: Center(
           child: Form(
