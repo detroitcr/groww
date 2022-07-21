@@ -1,0 +1,53 @@
+Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        GestureDetector(
+          onTap: () {
+            print(CustomChipWidget);
+          },
+          child: Chip(
+            padding:
+                const EdgeInsets.only(left: 15, right: 15, top: 8, bottom: 8),
+            side: BorderSide(color: Colors.grey.shade300, width: 1),
+            backgroundColor: CustomColor.backGroundColor,
+            //    padding: EdgeInsets.all(4),
+            label: const Image(
+              //fit: BoxFit.fill,
+              image: AssetImage(Asset.google), height: 30, width: 30,
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {
+            print(CustomChipWidget);
+          },
+          child: Chip(
+            padding:
+                const EdgeInsets.only(left: 15, right: 15, top: 8, bottom: 8),
+            side: BorderSide(color: Colors.grey.shade300, width: 1),
+            backgroundColor: CustomColor.backGroundColor,
+            //    padding: EdgeInsets.all(4),
+            label: const Image(
+              //fit: BoxFit.fill,
+              image: AssetImage(Asset.apple), height: 30, width: 30,
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {
+            print(CustomChipWidget);
+          },
+          child: Chip(
+            padding:
+                const EdgeInsets.only(left: 15, right: 15, top: 8, bottom: 8),
+            side: BorderSide(color: Colors.grey.shade300, width: 1),
+            backgroundColor: CustomColor.backGroundColor,
+            //    padding: EdgeInsets.all(4),
+            label: const Image(
+              //fit: BoxFit.fill,
+              image: AssetImage(Asset.fb), height: 30, width: 30,
+            ),
+          ),
+        ),
+      ],
+    );
