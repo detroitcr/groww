@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1043465103826",
+    "project_id": "groww-76135",
+    "storage_bucket": "groww-76135.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043465103826:android:ca39316b45548f508b000b",
+        "android_client_info": {
+          "package_name": "com.example.growwui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1043465103826-tch1n7dfv3551qhn3uqojnsm0m6unf9h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.growwui",
+            "certificate_hash": "f40e3d3a643891488f08981cd15f5a2c804ac8e7"
+          }
+        },
+        {
+          "client_id": "1043465103826-sat0aja732674gvhtf0ooiblohl63quo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtHSGKrLhPb0zr4e9Zls8J3DoDZ09Pc7k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1043465103826-sat0aja732674gvhtf0ooiblohl63quo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1043465103826-1432asjva39hn5bn2sfra22fbpbbqcpb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.growwui"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
